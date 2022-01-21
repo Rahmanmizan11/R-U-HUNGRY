@@ -2,17 +2,27 @@ from django.shortcuts import render
 
 # Create your views here.
 def homePage(request):
+    # landing page
     return render(request, '')
 
 def searchPage(request):
+    # Search result
     return render(request, '')
 
-def order(request):
+def notificationsPage(request):
+    # can give review 
+    # can see notifications 
+    return render(request, '')
+
+def cartPage(request):
+    # Can order 
+    # can remove from cart 
+    return render(request, '')
+ 
+def reviewPage(request):
+    # see all reviews 
     return render(request, '') 
 
-def addToCart(request):
-    return render(request, '')
-
-def giveReview(request):
-    return render(request, '')    
- 
+def menuPage(request):
+    # can add to cart 
+    return render(request, '') 

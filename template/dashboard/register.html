@@ -1,0 +1,35 @@
+{% include 'dashboard/base.html' %}
+
+{% block mainContent %}
+<div class="layer"></div>
+<main class="page-center">
+  <article class="sign-up">
+    <h1 class="sign-up__title">R U Hungry</h1>
+    <p class="sign-up__subtitle">Get started</p>
+    <form class="sign-up-form form" action="" method="POST">
+        {% csrf_token %}
+      <label class="form-label-wrapper">
+        <p class="form-label">Username</p>
+        <small class="text-danger">{{regForm.errors.username}}</small>
+        <input class="form-input" type="text" placeholder="Enter username" name="username" required>
+      </label>
+      <label class="form-label-wrapper">
+        <p class="form-label">Email</p>
+        <small class="text-danger">{{regForm.errors.email}}</small>
+        <input class="form-input" type="email" placeholder="Enter your email" name="email" required>
+      </label>
+      <label class="form-label-wrapper">
+        <p class="form-label">Password</p>
+        <input class="form-input" type="password" placeholder="Enter your password" name="password1" required>
+      </label>
+      <label class="form-label-wrapper">
+        <p class="form-label">Confarm Password</p>
+        <small class="text-danger">{{regForm.errors.password2}}</small>
+        <input class="form-input" type="password" placeholder="Confarm your password" name="password2" required>
+        
+      </label>
+      <button type="submit" class="form-btn primary-default-btn transparent-btn">Register</button>
+    </form>
+  </article>
+</main>
+{% endblock mainContent %}

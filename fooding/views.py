@@ -3,7 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 def homePage(request):
     # landing page
-    return render(request, '')
+    return render(request, 'fooding/index.html')
 
 def searchPage(request):
     # Search result

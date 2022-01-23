@@ -15,4 +15,5 @@ class Menu(models.Model):
     name = models.CharField(max_length=30)
     price = models.IntegerField()
     retaurant = models.ForeignKey(Restaurant, on_delete=CASCADE)
+    # image = models.FileField(upload_to='profile/', null=True, blank=True)
     is_available = models.BooleanField(default=True)

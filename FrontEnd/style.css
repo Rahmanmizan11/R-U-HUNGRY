@@ -145,6 +145,7 @@ header .navbar a:hover{
 .home .image img{
     width: 100%;
     padding: 1rem;
+    border-radius: 3rem;
     animation: float 3s linear infinite;
 
 }
@@ -278,7 +279,7 @@ header .navbar a:hover{
 
 
 
-/* Login Form */
+/* SignUp Form */
 .divider-text {
     position: relative;
     text-align: center;
@@ -287,7 +288,7 @@ header .navbar a:hover{
 }
 .divider-text span {
     padding: 7px;
-    font-size: 12px;
+    font-size: 18px;
     position: relative;   
     z-index: 2;
 }
@@ -295,26 +296,38 @@ header .navbar a:hover{
     content: "";
     position: absolute;
     width: 100%;
-    border-bottom: 1px solid cac8c8;
+    border-bottom: 1px solid #cac8c8;
     top: 55%;
     left: 0;
     z-index: 1;
 }
 
-.btn-facebook {
-    background-color: #405D9D;
-    color: #fff;
-}
-.btn-twitter {
-    background-color: #42AEEC;
-    color: #fff;
-}
-/* Login form ends */
+
+/* SignUp form ends */
 
 
+/* Login form */
+
+#login .container #login-row #login-column #login-box {
+    margin-top: 120px;
+    max-width: 600px;
+    height: 320px;
+    border: 2px solid #cac8c8;
+    background-color: white;
+  }
+  #login .container #login-row #login-column #login-box #login-form {
+    padding: 20px;
+  }
+  #login .container #login-row #login-column #login-box #login-form #register-link {
+    margin-top: -85px;
+  }
+
+/* Login Form ends */
 
 
+/* Review Page */
 
+/*review page ends*/
 
 
 /* media queries */

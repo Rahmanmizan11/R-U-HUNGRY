@@ -13,5 +13,5 @@ urlpatterns = [
     path('dashboard/account-info/', userViews.userDashboardProfile, name="user-dashboard"),
     # General 
     path('', generalViews.homePage, name='home'),
-    path('search/', generalViewsgi.searchPage, name='search'),
+    path('search/', generalViews.searchPage, name='search'),
 ]

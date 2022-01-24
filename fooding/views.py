@@ -26,3 +26,9 @@ def reviewPage(request):
 def menuPage(request):
     # can add to cart 
     return render(request, '') 
+
+def createGeneralOrder(request):
+    return render(request, 'dashboard/generalUser/addOrder.html')
+
+def allGeneralOrder(request):
+    return render(request, 'dashboard/generalUser/allOrder.html')

@@ -1,4 +1,3 @@
-from pickle import FALSE
 from django.http import HttpResponse
 from seller.models import Restaurant
 from user_management.models import UserDetail

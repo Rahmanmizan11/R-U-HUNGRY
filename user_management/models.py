@@ -8,7 +8,7 @@ class UserDetail(models.Model):
     contact_no = models.CharField(null=True, max_length=20)
     address = models.TextField(null=True, max_length=100)
     gender = models.CharField(null=True, max_length=10)
-    dob = models.DateField(null=True)
+    dob = models.DateField(null=True, blank=True)
     is_seller = models.BooleanField(default=False)
     is_admin = models.BooleanField(default=False)
     has_applied = models.BooleanField(default=False)

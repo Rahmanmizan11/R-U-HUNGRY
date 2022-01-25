@@ -16,7 +16,7 @@ urlpatterns = [
     path('logout/',userViews.logoutUser, name='logout'),
     
     # Dashboard 
-    path('dashboard/account-info/', userViews.userDashboardProfile, name="user-dashboard"),
+    # path('dashboard/account-info/', userViews.userDashboardProfile, name="user-dashboard"),
     path('dashboard/all-orders/', generalViews.allGeneralOrder, name="allGeneralOrder"),
     path('dashboard/profile/', userViews.profile, name="dashboardProfile"),
     path('dashboard/menu/', sellerViews.menuPage, name="menuPage"),

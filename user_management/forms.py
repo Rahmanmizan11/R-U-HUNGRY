@@ -26,13 +26,11 @@ class UserRegistraionForm(UserCreationForm):
 
 class EditUserForm(forms.ModelForm):
     uid = forms.CharField(widget=forms.HiddenInput(attrs={'required': False}))
-    username = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'John', 'required': True}))
-    first_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'John', 'required': True}))
-    last_name = forms.CharField(required=False ,widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Wick'}))
+    
     email = forms.EmailField(widget=forms.EmailInput(attrs={'class':'form-control', 'placeholder':'name@example.com', 'required': True}))
     class Meta:
         model = User
-        fields = ['uid','username', 'first_name','last_name','email',]
+        fields = ['uid', 'first_name','last_name','email',]
 
     def clean_email(self):
         email = self.cleaned_data.get('email')
@@ -45,13 +43,9 @@ class EditUserForm(forms.ModelForm):
         return email
 
 class EditUserDetailForm(forms.ModelForm):
-    contact_no = forms.CharField()
-    address = forms.Textarea()
-    gender = forms.CharField()
-    dob = forms.DateField()
     class Meta:
         model = UserDetail
-        fields = ['contact_no','address','gender','dob']
+        fields = ['contact_no','address','gender','dob',]
 
 class ChangePassword(PasswordChangeForm):
     class Meta:

@@ -21,7 +21,7 @@ def register(request):
             new_user = authenticate(username=regForm.cleaned_data.get('username'), password=regForm.cleaned_data.get('password1'))
             login(request,new_user)
             messages.success(request, 'Account Created Successfully.')
-            return redirect('user-dashboard')
+            return redirect('dashboardProfile')
 
     dict = {'regForm': regForm}
     return render(request, template_name='dashboard/register.html', context=dict)
@@ -37,7 +37,7 @@ def loginPage(request):
             if next:
                 return redirect(next)
             else:
-                return redirect('user-dashboard')
+                return redirect('dashboardProfile')
         else:
             messages.error(request, 'Username OR Password is Incorrect')
 
@@ -65,7 +65,9 @@ def userDashboardProfile(request):
     }
 
     if request.method == 'POST':
+       
         if 'btnform1' in request.POST:
+            
             updateInfoForm = EditUserForm(request.POST, instance=request.user)
             updateUserDetailForm = EditUserDetailForm(request.POST, instance=request.user.userdetail)
             
@@ -73,9 +75,10 @@ def userDashboardProfile(request):
                 updateInfoForm.save()
                 updateUserDetailForm.save()
                 messages.success(request, 'Profile Updated Successfully')
-                return redirect('user-dashboard')
+                return redirect('dashboardProfile')
             else:
                 dict['form'] = updateInfoForm
+                
 
 
         if 'btnform2' in request.POST:
@@ -85,7 +88,7 @@ def userDashboardProfile(request):
                 user = cpForm.save()
                 update_session_auth_hash(request, user)
                 messages.success(request, 'Password Changed Successfully')
-                return redirect('user-dashboard')
+                return redirect('dashboardProfile')
             else:
                 dict['cpForm'] = cpForm
 
@@ -95,12 +98,60 @@ def userDashboardProfile(request):
             User.objects.get(id=dUserID).delete()
             return JsonResponse({'status': 200})
     
-    return render(request, template_name='dashboard/index.html')     
+    # return render(request, template_name='dashboard/index.html')     
+    return render(request, template_name='dashboard/profile.html')     
 
 
 @login_required
 def profile(request):
+    try:
+        userDetails = request.user.userdetail
+    except:
+        userDetails = UserDetail.objects.create(user= request.user)
     
+    updateInfoForm = EditUserForm(initial={'uid':request.user.id, 'username': request.user, 'first_name': request.user.first_name, 'last_name': request.user.last_name, 'email': request.user.email})
+    updateUserDetailForm = EditUserDetailForm(initial={'contact_no': request.user.userdetail.contact_no, 'address': request.user.userdetail.address})
+    cpForm = ChangePassword(request.user)
+
+    dict = {
+        'form': updateInfoForm, 
+        'cpForm': cpForm, 
+        'userDetails': userDetails, 
+    }
+
+    if request.method == 'POST':
+       
+        if 'btnform1' in request.POST:
+            
+            updateInfoForm = EditUserForm(request.POST, instance=request.user)
+            updateUserDetailForm = EditUserDetailForm(request.POST, instance=request.user.userdetail)
+            
+            if updateInfoForm.is_valid() and updateUserDetailForm.is_valid():
+                updateInfoForm.save()
+                updateUserDetailForm.save()
+                messages.success(request, 'Profile Updated Successfully')
+                return redirect('dashboardProfile')
+            else:
+                dict['form'] = updateInfoForm
+                messages.success(request, f'{updateInfoForm.errors} {updateUserDetailForm.errors}')
+                return redirect('dashboardProfile')
+                
+
+
+        if 'btnform2' in request.POST:
+            cpForm = ChangePassword(request.user, request.POST)
+
+            if cpForm.is_valid():
+                user = cpForm.save()
+                update_session_auth_hash(request, user)
+                messages.success(request, 'Password Changed Successfully')
+                return redirect('dashboardProfile')
+            else:
+                dict['cpForm'] = cpForm
+                messages.success(request, f'{cpForm.errors}')
+                return redirect('dashboardProfile')
+
+       
     return render(request, template_name='dashboard/profile.html')
 
 

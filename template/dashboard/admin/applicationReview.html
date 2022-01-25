@@ -43,6 +43,7 @@
                     <table class="posts-table">
                         <thead>
                             <tr class="users-table-info">
+                                <th>Image</th>
                                 <th>Owner</th>
                                 <th>Business Name</th>
                                 <th>Business Type</th>
@@ -54,6 +55,7 @@
                         <tbody>
                             {% for i in application %}
                                 <tr>
+                                    <td> <img src="{{i.image.url}}" alt="Restaurant Image"> </td>
                                     <td>{{i.user}}</td>
                                     <td>{{i.name}}</td>
                                     <td>{{i.type}}</td>

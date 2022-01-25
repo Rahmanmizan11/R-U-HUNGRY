@@ -1,12 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+    {% load static %}
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home</title>
+
+    <!-- custom font link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!--CSS link-->
+    <link rel="stylesheet" href={% static 'fooding/style.css' %}>
 </head>
 <body>
-    <h1>Hello bob</h1>
+    
+<!--header section starts-->
+
+<header>
+
+    <a href="#" class = "logo"> R U HUNGRY?</a>
+
+    <div id="menu-bar" class="fas fa-bars"></div>
+
+    <nav class="navbar">
+        <a href="#">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="review.html">Review</a>
+        <a href="signup.html">SignUp</a>
+    </nav>
+
+</header>
+
+<!--header section ends-->
+
+
+<!--Home Section Starts-->
+
+<section class="home" id="home">
+    <div class="content">
+        <h2>R U HUNGRY?</h2>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit similique nesciunt temporibus numquam nobis repellendus, veniam aspernatur culpa laborum illo animi molestias aliquid. Obcaecati nulla hic, enim doloremque vero animi?</p>
+        <a href="#" class="btn">Order Now!</a>
+    </div>
+    <div class="image">
+        <img src="images/home.jpg" alt="Delicious Food">
+    </div>
+</section>
+
+<!--HOme Section Ends-->
+
+
+
+
+
+
+
+<!--js file link-->
+<link rel="stylesheet" href="script.js">
 </body>
 </html>

@@ -17,6 +17,7 @@ urlpatterns = [
     path('dashboard/all-orders/', generalViews.allGeneralOrder, name="allGeneralOrder"),
     path('dashboard/profile/', userViews.profile, name="dashboardProfile"),
     path('dashboard/menu/', sellerViews.menuPage, name="menuPage"),
+    path('dashboard/menu/delete/<int:id>', sellerViews.deleteMenuItem, name="deleteMenuItem"),
     path('dashboard/admin/approve/<int:id>/', userViews.approve, name="approve"),
     path('dashboard/admin/reject/<int:id>/', userViews.reject, name="reject"),
     path('dashboard/admin/application-review/', userViews.applicationReview, name="applicationReview"),

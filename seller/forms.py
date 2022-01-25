@@ -5,8 +5,8 @@ from seller.models import Menu, Restaurant
 class MenuForm(forms.ModelForm):
     class Meta:
         model = Menu
-        # fields = '__all__'
-        exclude = ['is_available']
+        fields = '__all__'
+        # exclude = ['is_available']
 
 
 class RestaurantForm(forms.ModelForm):

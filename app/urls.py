@@ -27,6 +27,7 @@ urlpatterns = [
     path('dashboard/apply-for-new-resturent/', sellerViews.create_restaurant, name="allpyForResturent"),
     # General menuPage
     path('', generalViews.homePage, name='home'),
+    path('menu-tems/<int:id>/', generalViews.menuPage, name='generalMenu'),
    
     path('search/', generalViews.searchPage, name='search'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

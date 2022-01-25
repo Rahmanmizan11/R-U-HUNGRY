@@ -24,9 +24,9 @@ def reviewPage(request):
     # see all reviews 
     return render(request, '') 
 
-def menuPage(request):
+def menuPage(request, id):
     # can add to cart 
-    return render(request, '') 
+    return render(request, 'fooding/menu.html') 
 
 def createGeneralOrder(request):
     return render(request, 'dashboard/generalUser/addOrder.html')

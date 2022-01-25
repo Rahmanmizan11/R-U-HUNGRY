@@ -31,8 +31,17 @@ def reviewPage(request):
     # see all reviews 
     return render(request, 'fooding/review.html') 
 
+def restaurantPage(request):
+    restaurants = Restaurant.objects.filter(type='restaurant', )
+    homechefs = Restaurant.objects.filter(type='home', )
+    context = {
+        'restaurants' : restaurants,
+        'homechefs': homechefs,
+    } 
+    return render(request, 'fooding/restaurent.html', context) 
+
 def menuPage(request, id):
-    # can add to cart 
+    
     return render(request, 'fooding/menu.html') 
 
 def createGeneralOrder(request):

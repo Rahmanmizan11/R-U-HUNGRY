@@ -96,23 +96,10 @@
                             <div class="close-offcanvas-wrapper"><span class="close-offcanvas">x</span></div>
                             <div class="main-nav">
                                 <ul id="main-nav" class="nav nav-pills">
-                                    <li class="dropdown current-menu-item"><a href="index.html"
-                                            class="dropdown-toggle">Home</a><i
-                                            class="fa fa-angle-down btn-open-dropdown"></i>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="index.html">Home 1</a></li>
-                                            <li><a href="homepage2.html">Home 2</a></li>
-                                            <li><a href="homepage3.html">Home 3</a></li>
-                                            <li><a href="home-fullpage.html" target="_blank">Home Full Page</a></li>
-                                            <li><a href="home-shop.html">Home Shop</a></li>
-                                            <li><a href="homesidebarmenu.html">Home Sidebar Menu</a></li>
-                                            <li><a href="home-one-page.html" target="_blank">Home One Page</a></li>
-                                            <li><a href="home-boxed.html">Home Boxed</a></li>
-                                        </ul>
-                                    </li>
+                                    <li><a href="/">Home</a></li>
                                     <li><a href="#">About</a></li>
-                                    <li class="dropdown"><a href="menu-grid-1.html" class="dropdown-toggle">
-                                        Menu</a><i class="fa fa-angle-down btn-open-dropdown"></i>
+                                    <li ><a href="{% url 'restaurants' %}" class="dropdown-toggle">
+                                        Menu</a>
                                 </li>
                                     <li><a href="{% url 'reviews' %}">Reviews</a></li>
                                 </ul>

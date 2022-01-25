@@ -1,6 +1,7 @@
-from seller.models import Restaurant
+from seller.models import Menu, Restaurant
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 
 # Create your views here.
 def homePage(request):
@@ -41,8 +42,18 @@ def restaurantPage(request):
     return render(request, 'fooding/restaurent.html', context) 
 
 def menuPage(request, id):
+    try:
+        x = Restaurant.objects.get(id=id)
+        restaurant = Menu.objects.filter(retaurant_id=id, is_available=True)
+        context = {
+            'restaurantInfo' : x,
+            'menuInfo' : restaurant
+        }    
+        return render(request, 'fooding/menu.html', context) 
+    except:
+        return HttpResponse("Restaurant Not Found")
+
     
-    return render(request, 'fooding/menu.html') 
 
 def createGeneralOrder(request):
     return render(request, 'dashboard/generalUser/addOrder.html')

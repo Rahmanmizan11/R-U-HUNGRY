@@ -22,7 +22,7 @@ def cartPage(request):
  
 def reviewPage(request):
     # see all reviews 
-    return render(request, '') 
+    return render(request, 'fooding/review.html') 
 
 def menuPage(request, id):
     # can add to cart 

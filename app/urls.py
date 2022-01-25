@@ -28,6 +28,7 @@ urlpatterns = [
     # General menuPage
     path('', generalViews.homePage, name='home'),
     path('menu-tems/<int:id>/', generalViews.menuPage, name='generalMenu'),
+    path('reviews/', generalViews.reviewPage, name='reviews'),
    
     path('search/', generalViews.searchPage, name='search'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

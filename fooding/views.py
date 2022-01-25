@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def homePage(request):
@@ -26,3 +27,10 @@ def reviewPage(request):
 def menuPage(request):
     # can add to cart 
     return render(request, '') 
+
+def createGeneralOrder(request):
+    return render(request, 'dashboard/generalUser/addOrder.html')
+
+@login_required
+def allGeneralOrder(request):
+    return render(request, 'dashboard/generalUser/allOrder.html')

@@ -4,16 +4,15 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Restaurant(models.Model):
+    user = models.ForeignKey(User, on_delete=CASCADE)
     name = models.CharField(max_length=30, unique=True)
-    image = models.FileField(upload_to='profile/', null=True, blank=True)
+    image = models.FileField(upload_to='restaurant/', null=True, blank=True)
     type = models.CharField(max_length=20)
-
-class Category(models.Model):
-    name = models.CharField(max_length=30)
 
 class Menu(models.Model):
     name = models.CharField(max_length=30)
     price = models.IntegerField()
     retaurant = models.ForeignKey(Restaurant, on_delete=CASCADE)
-    # image = models.FileField(upload_to='profile/', null=True, blank=True)
+    image = models.FileField(upload_to='menu/', null=True, blank=True)
     is_available = models.BooleanField(default=True)
+    category = models.CharField(max_length=30)

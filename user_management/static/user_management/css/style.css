@@ -1033,12 +1033,14 @@ body {
 }
 
 .menu-toggle {
+  display: none;
   background-image: url(../img/svg/Bulk/Menu-toggle-white.svg);
   width: 24px;
   height: 24px;
 }
 
 .menu-toggle--gray {
+  display: none;
   background-image: url(../img/svg/Bulk/Menu-toggle-gray.svg);
   width: 24px;
   height: 24px;
@@ -1369,12 +1371,12 @@ button.disabled:focus {
   flex-wrap: wrap;
   border-radius: 4px;
   padding: 10px 20px;
-  background-color: #2f49d1;
+  background-color: #f7b121;
   color: #fff;
 }
 
 .primary-default-btn:hover {
-  background-color: #4661F0;
+  background-color: #f7b121;
   color: #fff;
 }
 
@@ -1393,14 +1395,14 @@ button.disabled:focus {
   border-radius: 4px;
   padding: 10px 20px;
   background-color: #fff;
-  color: #2f49d1;
+  color: #f7b121;
   font-weight: 500;
   font-size: 14px;
   line-height: 2.43;
 }
 
 .primary-white-btn:hover {
-  color: #4661F0;
+  color: #f7b121;
 }
 
 .secondary-default-btn {
@@ -1417,8 +1419,8 @@ button.disabled:focus {
   flex-wrap: wrap;
   border-radius: 4px;
   padding: 10px 20px;
-  border: 2px solid #2f49d1;
-  color: #2f49d1;
+  border: 2px solid #f7b121;
+  color: #f7b121;
   background-color: transparent;
 }
 
@@ -1441,7 +1443,7 @@ button.disabled:focus {
   border-radius: 4px;
   font-size: 16px;
   line-height: 1.5;
-  color: #2f49d1;
+  color: #f7b121;
 }
 
 .sidebar-toggle {
@@ -1715,7 +1717,7 @@ button.disabled:focus {
 }
 
 .dropdown a:hover {
-  color: #2f49d1;
+  color: #f7b121;
 }
 
 .badge-pending,
@@ -1993,7 +1995,7 @@ label {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  background-color: #0061f7 !important;
+  background-color: #f7b121 !important;
   width: 253px;
   padding: 20px 15px 37px 20px;
   -webkit-transition: 0.5s all;
@@ -2046,7 +2048,7 @@ label {
   padding: 8px 0;
   opacity: 0.6;
   color: #fff;
-  font-weight: 500;
+  font-weight: bolder;
   font-size: 14px;
   line-height: 2.43;
 }
@@ -2220,11 +2222,11 @@ label {
   margin-top: 13px;
   margin-bottom: 2px;
   text-transform: uppercase;
-  font-weight: 500;
+  font-weight: bolder;
   font-size: 12px;
   line-height: 1.25;
   letter-spacing: 0.75px;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgb(255, 255, 255);
 }
 
 .cat-sub-menu {
@@ -2664,7 +2666,7 @@ label {
 
 .stat-cards-icon.primary {
   background-color: rgba(47, 73, 209, 0.1);
-  color: #2f49d1;
+  color: #f7b121;
 }
 
 .stat-cards-icon.warning {
@@ -2863,7 +2865,7 @@ label {
 }
 
 .top-cat-list__subtitle .blue {
-  color: #0061f7;
+  color: #f7b121;
   background-color: rgba(116, 51, 255, 0.1);
 }
 
@@ -2883,7 +2885,7 @@ label {
 }
 
 .top-cat-list__subtitle .primary {
-  color: #2f49d1;
+  color: #f7b121;
   background-color: rgba(47, 73, 209, 0.1);
 }
 
@@ -3106,8 +3108,8 @@ label {
 }
 
 .footer a:hover {
-  color: #2f49d1;
-  border-color: #2f49d1;
+  color: #f7b121;
+  border-color: #f7b121;
 }
 
 .form {
@@ -3225,8 +3227,8 @@ label {
 }
 
 .forget-link:hover {
-  color: #2f49d1;
-  border-color: #2f49d1;
+  color: #f7b121;
+  border-color: #f7b121;
 }
 
 .sign-up__title {
@@ -3999,7 +4001,7 @@ label {
   }
 
   .main-nav .sidebar-toggle {
-    display: none;
+    
   }
 }
 
@@ -4143,7 +4145,7 @@ label {
 
 @media (max-width: 1199.98px) {
   .sidebar {
-    position: fixed;
+    
     z-index: 2;
     overflow-y: auto;
     left: -1000px;

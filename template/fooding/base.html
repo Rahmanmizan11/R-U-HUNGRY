@@ -49,16 +49,6 @@
             <header>
                 <div class="header-top top-layout-02">
                     <div class="container">
-                        <div class="topbar-left">
-                            <div class="topbar-content">
-                                <div class="item">
-                                    <div class="wg-contact"><i class="fa fa-map-marker"></i><span></span></div>
-                                </div>
-                                <div class="item">
-                                    <div class="wg-contact"><i class="fa fa-phone"></i><span>01XX XXX XXXX</span></div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="topbar-right">
                             <div class="topbar-content">
                                 <div class="item">
@@ -70,7 +60,7 @@
                                     </ul>
                                 </div>
                                 <div class="item">
-                                    <div class="wg-social"><i class="fa fa-user"></i><a href="{% url 'user-dashboard' %}">My
+                                    <div class="wg-social"><i class="fa fa-user"></i><a href="{% url 'dashboardProfile' %}">My
                                             Account</a></div>
                                 </div>
                             </div>
@@ -81,47 +71,9 @@
                     <div class="container">
                         <div class="open-offcanvas">&#9776;</div>
                         <div class="utility-nav">
-                            <div class="dropdown dropdown-full-mobile"><a href="#" data-toggle="dropdown" role="button"
-                                    aria-haspopup="true" aria-expanded="false" class="search-bar dropdown-toggle"><i
+                            <div class="dropdown dropdown-full-mobile"><a href="#" class="search-bar dropdown-toggle"><i
                                         class="fa fa-shopping-bag"></i></a>
-                                <div class="dropdown-menu">
-                                    <div class="cart_lite">
-                                        <div class="cart_lite_list">
-                                            <ul>
-                                                <li class="cart_lite_item"><a href="product-single.html"
-                                                        class="cart_item_thumbnail"><img width="150" height="100"
-                                                            src="assets/images/product/product-circle-1h.jpg" alt=""
-                                                            class="img-responsive"></a>
-                                                    <div class="cart_item_summary"><a href="product-single.html"
-                                                            class="cart_item_title">Caramel Frappuccino</a><span
-                                                            class="product-price-amount"><span class="quantity">1 ×
-                                                            </span><span
-                                                                class="product-price-currencySymbol">$</span>12.0</span>
-                                                    </div><a href="#" class="remove_from_cart_button">×</a>
-                                                </li>
-                                                <li class="cart_lite_item"><a href="product-single.html"
-                                                        class="cart_item_thumbnail"><img width="150" height="100"
-                                                            src="assets/images/product/product-circle-1k.jpg" alt=""
-                                                            class="img-responsive"></a>
-                                                    <div class="cart_item_summary"><a href="product-single.html"
-                                                            class="cart_item_title">Chocolate Fudge Ripple</a><span
-                                                            class="product-price-amount"><span class="quantity">2 ×
-                                                            </span><span
-                                                                class="product-price-currencySymbol">$</span>24.0</span>
-                                                    </div><a href="#" class="remove_from_cart_button">×</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="cart_lite_total">
-                                            <p><strong>Subtotal: </strong><span class="product-price-amount"><span
-                                                        class="product-price-currencySymbo">$</span>60.0</span></p>
-                                        </div>
-                                        <div class="cart_lite_button"><a href="product-cart.html"
-                                                class="swin-btn btn-sm"><span>View Cart</span></a><a
-                                                href="product-checkout.html"
-                                                class="swin-btn btn-sm"><span>Checkout</span></a></div>
-                                    </div>
-                                </div>
+                                
                             </div>
                             <div class="dropdown"><a href="#" data-toggle="dropdown" role="button" aria-haspopup="true"
                                     aria-expanded="false" class="search-bar dropdown-toggle"><i
@@ -158,32 +110,11 @@
                                             <li><a href="home-boxed.html">Home Boxed</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="about.html">About</a></li>
-                                    <li><a href="reservation.html">Reservation</a></li>
+                                    <li><a href="#">About</a></li>
                                     <li class="dropdown"><a href="menu-grid-1.html" class="dropdown-toggle">
-
-                                            Menu</a><i class="fa fa-angle-down btn-open-dropdown"></i>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="menu-classic.html">Menu Classic</a></li>
-                                            <li><a href="menu-grid-1.html">Menu Grid 01</a></li>
-                                            <li><a href="menu-grid-2.html">Menu Grid 02</a></li>
-                                            <li><a href="menu-grid-3.html">Menu Grid 03</a></li>
-                                            <li><a href="product-single.html">Product Detail</a></li>
-                                            <li><a href="product-cart.html">Product Cart</a></li>
-                                            <li><a href="product-checkout.html">Product Checkout</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="dropdown"><a href="#" data-toggle="dropdown" role="button"
-                                            aria-haspopup="true" aria-expanded="false"
-                                            class="dropdown-toggle">Blog</a><i
-                                            class="fa fa-angle-down btn-open-dropdown"></i>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="blogs.html">Blog List</a></li>
-                                            <li><a href="blog-single.html">Blog Single</a></li>
-                                            <li><a href="page-404.html">404 Page</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="contact.html">Contact</a></li>
+                                        Menu</a><i class="fa fa-angle-down btn-open-dropdown"></i>
+                                </li>
+                                    <li><a href="#">Reviews</a></li>
                                 </ul>
                             </div>
                         </nav>

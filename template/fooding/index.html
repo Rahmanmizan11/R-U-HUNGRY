@@ -64,23 +64,25 @@
                                 {% for i in restaurants %}
                                     {% if i.user.userdetail.is_seller %}
                                         <div class="col-md-3 col-sm-6 col-xs-12">
-                                            <div class="blog-item item swin-transition">
-                                                <div class="block-img"><img
-                                                        src="{{i.image.url}}" alt="Restaurant Image"
-                                                        class="img img-responsive">
-                                                    <div class="block-circle price-wrapper"><span
-                                                            class="price woocommerce-Price-amount amount"><span
-                                                                class="price-symbol"></span>TOP</span></div>
-                                                </div>
-                                                <div class="block-content">
-                                                    <h5 class="title"><a href="">{{i.name}}</a></h5>
-                                                    <div class="product-info">
-                                                        <ul class="list-inline">
-                                                            <li class="author"><span>Check {{i.name}}'s</span><span class="text">Menu</span></li>
-                                                        </ul>
+                                            <a href="{% url 'menuPage' i.id %}">
+                                                <div class="blog-item item swin-transition">
+                                                    <div class="block-img"><img
+                                                            src="{{i.image.url}}" alt="Restaurant Image"
+                                                            class="img img-responsive">
+                                                        <div class="block-circle price-wrapper"><span
+                                                                class="price woocommerce-Price-amount amount"><span
+                                                                    class="price-symbol"></span>TOP</span></div>
+                                                    </div>
+                                                    <div class="block-content">
+                                                        <h5 class="title"><a href="{% url 'menuPage' i.id %}">{{i.name}}</a></h5>
+                                                        <div class="product-info">
+                                                            <ul class="list-inline">
+                                                                <li class="author"><span>Check {{i.name}}'s</span><span class="text">Menu</span></li>
+                                                            </ul>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </a>   
                                         </div>
                                     {% endif %}
                                 {% endfor %}
@@ -102,23 +104,25 @@
                                 {% for i in homechefs %}
                                     {% if i.user.userdetail.is_seller %}
                                         <div class="col-md-3 col-sm-6 col-xs-12">
-                                            <div class="blog-item item swin-transition">
-                                                <div class="block-img"><img
-                                                        src="{{i.image.url}}" alt="Restaurant Image"
-                                                        class="img img-responsive">
-                                                    <div class="block-circle price-wrapper"><span
-                                                            class="price woocommerce-Price-amount amount"><span
-                                                                class="price-symbol"></span>TOP</span></div>
-                                                </div>
-                                                <div class="block-content">
-                                                    <h5 class="title"><a href="">{{i.name}}</a></h5>
-                                                    <div class="product-info">
-                                                        <ul class="list-inline">
-                                                            <li class="author"><span>Check {{i.name}}'s</span><span class="text">Menu</span></li>
-                                                        </ul>
+                                            <a href="{% url 'menuPage' i.id %}">
+                                                <div class="blog-item item swin-transition">
+                                                    <div class="block-img"><img
+                                                            src="{{i.image.url}}" alt="Restaurant Image"
+                                                            class="img img-responsive">
+                                                        <div class="block-circle price-wrapper"><span
+                                                                class="price woocommerce-Price-amount amount"><span
+                                                                    class="price-symbol"></span>TOP</span></div>
+                                                    </div>
+                                                    <div class="block-content">
+                                                        <h5 class="title"><a href="{% url 'menuPage' i.id %}">{{i.name}}</a></h5>
+                                                        <div class="product-info">
+                                                            <ul class="list-inline">
+                                                                <li class="author"><span>Check {{i.name}}'s</span><span class="text">Menu</span></li>
+                                                            </ul>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </a>    
                                         </div>
                                     {% endif %}
                                 {% endfor %}

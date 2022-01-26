@@ -16,6 +16,8 @@
     <!-- WARNING: Respond.js doesn't work if you view the page via file://-->
     <!-- IE 9-->
     <!-- Vendors-->
+    
+    
     <link rel="stylesheet" href="{% static 'fooding/assets/vendors/flexslider/flexslider.min.css' %}">
     <link rel="stylesheet" href="{% static 'fooding/assets/vendors/swipebox/css/swipebox.min.css' %}">
     <link rel="stylesheet" href="{% static 'fooding/assets/vendors/slick/slick.min.css' %}">
@@ -71,7 +73,7 @@
                     <div class="container">
                         <div class="open-offcanvas">&#9776;</div>
                         <div class="utility-nav">
-                            <div class="dropdown dropdown-full-mobile"><a href="#" class="search-bar dropdown-toggle"><i
+                            <div class="dropdown dropdown-full-mobile"><a href="{% url 'carts' %}" class="search-bar dropdown-toggle"><i
                                         class="fa fa-shopping-bag"></i></a>
                                 
                             </div>
@@ -336,6 +338,7 @@
             </div>
         </div> {% endcomment %}
     </div>
+    
     <!-- jQuery-->
     <script src="{% static 'fooding/assets/vendors/jquery-1.10.2.min.js' %}"></script>
     <!-- Bootstrap JavaScript-->
@@ -365,6 +368,7 @@
     <script src="{% static 'fooding/assets/js/layout.js' %}"></script>
     <script src="{% static 'fooding/assets/js/elements.js' %}"></script>
     <script src="{% static 'fooding/assets/js/widget.js' %}"></script>
+    
 </body>
 
 <!-- Mirrored from sun-themes.com/html/fooday/home-shop.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 25 Jan 2022 19:03:54 GMT -->

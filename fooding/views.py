@@ -1,8 +1,8 @@
 from seller.models import Menu, Restaurant
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
-
+from django.http import HttpResponse, HttpResponseRedirect
+from django.urls import reverse
 # Create your views here.
 def homePage(request):
     restaurants = Restaurant.objects.filter(type='restaurant', )[:8]
@@ -23,10 +23,15 @@ def notificationsPage(request):
     # can see notifications 
     return render(request, '')
 
+@login_required
 def cartPage(request):
-    # Can order 
-    # can remove from cart 
-    return render(request, '')
+     
+    return render(request, 'fooding/cart.html')
+@login_required
+def addToCart(request, rid, iid):
+    
+    return HttpResponseRedirect(reverse('menuPage1'))
+    # return redirect('carts')
  
 def reviewPage(request):
     # see all reviews 

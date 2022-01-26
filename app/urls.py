@@ -28,7 +28,9 @@ urlpatterns = [
     # General menuPage
     path('', generalViews.homePage, name='home'),
     path('restaurants/', generalViews.restaurantPage, name='restaurants'),
-    path('restaurants/menu/<int:id>', generalViews.menuPage, name='menuPage'),
+    path('restaurants/menu/<int:id>', generalViews.menuPage, name='menuPage1'),
+    path('add-to-cart/<int:rid>/<int:iid>', generalViews.addToCart, name='addToCart'),
+    path('carts/', generalViews.cartPage, name='carts'),
     path('reviews/', generalViews.reviewPage, name='reviews'),
    
     path('search/', generalViews.searchPage, name='search'),

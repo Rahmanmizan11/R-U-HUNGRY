@@ -1,6 +1,3 @@
-
-
-
 {% extends './base.html' %}
 {% load static %}
 
@@ -37,31 +34,32 @@
                     <div class="products nav-slider">
                         <div class="row slick-padding">
                             {% for i in menuInfo %}
-                                <div class="col-md-4 col-sm-6 col-xs-12">
-                                    <div class="blog-item item swin-transition">
-                                        <div class="block-img"><img src="{{i.image.url}}" alt="Menu Image"
-                                                class="img img-responsive">
-                                            <div class="block-circle price-wrapper"><span
-                                                    class="price woocommerce-Price-amount amount"><span
-                                                        class="price-symbol">৳</span>{{i.price}}</span></div>
-                                            <div class="group-btn">
-                                                <a href="javascript:void(0)" class="swin-btn btn-add-to-card">
-                                                    <i class="fa fa-shopping-basket"></i>
-                                                </a>
-                                            </div>
+                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                <div class="blog-item item swin-transition">
+                                    <div class="block-img"><img src="{{i.image.url}}" alt="Menu Image"
+                                            class="img img-responsive">
+                                        <div class="block-circle price-wrapper"><span
+                                                class="price woocommerce-Price-amount amount"><span
+                                                    class="price-symbol">৳</span>{{i.price}}</span></div>
+                                        <div class="group-btn">
+                                            <a href="{% url 'addToCart' restaurantInfo.id i.id %}" class="swin-btn btn-add-to-card">
+                                                <i class="fa fa-shopping-basket"></i>
+                                            </a>
                                         </div>
-                                        <div class="block-content">
-                                            <h5 class="title"><a href="javascript:void(0)">{{i.name}}</a>
-                                            </h5>
-                                            <div class="product-info">
-                                                <ul class="list-inline">
-                                                    <li class="author"><span>Category</span><span class="text">{{i.category}}</span>
-                                                    </li>
-                                                </ul>
-                                            </div>
+                                    </div>
+                                    <div class="block-content">
+                                        <h5 class="title"><a href="javascript:void(0)">{{i.name}}</a>
+                                        </h5>
+                                        <div class="product-info">
+                                            <ul class="list-inline">
+                                                <li class="author"><span>Category</span><span
+                                                        class="text">{{i.category}}</span>
+                                                </li>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                             {% endfor %}
                         </div>
                     </div>
@@ -70,4 +68,30 @@
         </section>
     </div>
 </div>
+
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addCardleModal">
+    Launch demo modal
+  </button>
+  
+  
+  <div class="modal fade" id="addCardleModal" tabindex="-1" role="dialog" aria-labelledby="addCardleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addCardleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
 {% endblock main %}

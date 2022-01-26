@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'user_management',
     'fooding',
     'seller',
+    'watson',
 ]
 
 MIDDLEWARE = [

@@ -79,14 +79,14 @@
 						
 						{% if not request.user.userdetail.is_seller %}
 							<li>
-								<a class="active" href={% url 'allpyForResturent' %}><span class="icon edit" aria-hidden="true"></span>Become a sellar</a>
+								<a class="active" href="{% url 'allpyForResturent' %}"><span class="icon edit" aria-hidden="true"></span>Become a sellar</a>
 							</li>
 						{% else %}
 							<li>
-								<a class="active" href="appearance.html"><span class="icon category" aria-hidden="true"></span>Order Management</a>
+								<a class="active" href="{% url 'orderManagement' %}"><span class="icon category" aria-hidden="true"></span>Order Management</a>
 							</li>
 							<li>
-								<a class="active" href={% url 'menuPage1' %}><span class="icon folder" aria-hidden="true"></span>Menu Management</a>
+								<a class="active" href="{% url 'menuPage1' %}"><span class="icon folder" aria-hidden="true"></span>Menu Management</a>
 							</li>
 						{% endif %}
 						

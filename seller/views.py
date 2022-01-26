@@ -67,4 +67,4 @@ def deleteMenuItem(request, id):
     return redirect('menuPage1')
 
 def manage_orders(request):
-    pass
+    return render(request, 'dashboard/seller/order_management.html')

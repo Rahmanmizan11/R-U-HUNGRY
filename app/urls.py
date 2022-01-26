@@ -1,3 +1,4 @@
+from unicodedata import name
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -25,6 +26,8 @@ urlpatterns = [
     path('dashboard/admin/reject/<int:id>/', userViews.reject, name="reject"),
     path('dashboard/admin/application-review/', userViews.applicationReview, name="applicationReview"),
     path('dashboard/apply-for-new-resturent/', sellerViews.create_restaurant, name="allpyForResturent"),
+
+    path('dashboard/owner/order/', sellerViews.manage_orders, name='orderManagement'),
     # General menuPage
     path('', generalViews.homePage, name='home'),
     path('restaurants/', generalViews.restaurantPage, name='restaurants'),

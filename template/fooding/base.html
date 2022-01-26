@@ -62,9 +62,19 @@
                                     </ul>
                                 </div>
                                 <div class="item">
-                                    <div class="wg-social"><i class="fa fa-user"></i><a href="{% url 'dashboardProfile' %}">My
-                                            Account</a></div>
+                                    <div class="wg-social">
+                                        <i class="fa fa-user"></i>
+                                        <a href="{% url 'dashboardProfile' %}">My Account</a>
+                                    </div>
                                 </div>
+                                {% if user.is_authenticated %}
+                                <div class="item">
+                                    <div class="wg-social">
+                                        <i class="fas fa-sign-out-alt"></i>
+                                        <a href="{% url 'logout' %}">Logout</a>
+                                    </div>
+                                </div>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
@@ -92,7 +102,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="header-logo"><a href="index.html" class="logo"><img src="{% static 'fooding/assets/images/logo.png' %}"
+                        <div class="header-logo"><a href="/" class="logo"><img src="{% static 'fooding/assets/images/logo.png' %}"
                                     alt="fooday" class="logo-img"></a></div>
                         <nav id="main-nav-offcanvas" class="main-nav-wrapper">
                             <div class="close-offcanvas-wrapper"><span class="close-offcanvas">x</span></div>

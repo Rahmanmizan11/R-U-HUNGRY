@@ -67,10 +67,12 @@
                             {% endfor %}
                         </tbody>
                     </table>
+                    {% if items %}
                     <div class="actions" style="float: right;">
                         <input type="button" name="order_now" value="Order Now"
                             class="swin-btn f-right" onclick="sendData()">
                     </div>
+                    {% endif %}
             </section>
         </div>
     </div>

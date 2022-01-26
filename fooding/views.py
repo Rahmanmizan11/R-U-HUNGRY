@@ -1,12 +1,11 @@
 import json
-from urllib import parse
+from watson import search as watson
 from django.contrib import messages
 from fooding.models import Cart, Order
 from seller.models import Menu, Restaurant
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
-from django.urls import reverse
+from django.http import HttpResponse, JsonResponse
 # Create your views here.
 def homePage(request):
     restaurants = Restaurant.objects.filter(type='restaurant', )[:8]
@@ -22,7 +21,18 @@ def homePage(request):
 def searchPage(request):
     # Search result
     searchText = request.GET.get('q')
-    return render(request, 'fooding/search.html')
+
+    restaurants = watson.filter(Restaurant, searchText).filter(type='restaurant')
+    homechefs = watson.filter(Restaurant, searchText).filter(type='home')
+    foods = watson.filter(Menu, searchText).filter(is_available=True)
+
+    context = {
+        'restaurants' : restaurants,
+        'homechefs': homechefs,
+        'foods' : foods,
+    } 
+
+    return render(request, 'fooding/search.html', context)
 
 def notificationsPage(request):
     # can give review 
@@ -33,8 +43,10 @@ def notificationsPage(request):
 def cartPage(request):
     context ={
         'items' : Cart.objects.all(),
-        'rid' : Cart.objects.all()[0].restaurant.id,
     }
+    if Cart.objects.all().count() > 0:
+        context['rid'] = Cart.objects.all()[0].restaurant.id
+
     return render(request, 'fooding/cart.html', context)
 
 @login_required
@@ -76,6 +88,7 @@ def compliteOrder(request):
         data = request.POST.get('senddata')
         print(data)
         obj = json.loads(data)
+        print(obj)
       
         for i in obj:
             restaurant = Restaurant.objects.get(id=int(i['rid']))
@@ -88,6 +101,7 @@ def compliteOrder(request):
                                     item = item,
                                     quantity = quantity,
                                     total_price = total_price)
+            cart.delete()
         
         messages.success(request, "Order Placed Successfully")
    

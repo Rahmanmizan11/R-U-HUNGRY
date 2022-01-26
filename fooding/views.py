@@ -74,6 +74,7 @@ def compliteOrder(request):
     if request.method == 'POST':
         
         data = request.POST.get('senddata')
+        print(data)
         obj = json.loads(data)
       
         for i in obj:

@@ -88,31 +88,26 @@
             var sprice =  document.getElementById(`price_${id}`).textContent.trim().substring(1)*1;
             var tprice = document.getElementById(`total_price_${id}`);
             var q = document.getElementById(`input_id_${id}`).value*1;
-            tprice.textContent = q*sprice;
+            tprice.textContent = '৳'+q*sprice;
         }
-        let  data = [];
-       var table = $("table tbody");
         
-        rid = `{{rid}}`
-        table.find('tr').each(function (i) {
-            
-                var $tds = $(this).find('td');
-                productId = $tds.eq(0).text().substring(1);
-                // Quantity = $tds.eq(5).text();
-                price = $tds.eq(6).text().substring(1);
-                
-            // do something with productId, product, Quantity
-            // console.log('Id: ' + productId
-            //     + '\nQuantity: ' + Quantity
-            //     + '\nprice: ' + price);
-                let obj = {rid, productId,  price};
-                data.push(obj);
-        });
         
         function sendData(){
-            // let  = new FormData;
-
-            console.log(data)
+            let  data = [];
+            var table = $("table tbody");
+            
+            rid = `{{rid}}`
+            table.find('tr').each(function (i) {
+                
+                    var $tds = $(this).find('td');
+                    productId = $tds.eq(0).text().substring(1);
+                    // Quantity = $tds.eq(5).text();
+                    price = $tds.eq(6).text().substring(1);
+                    
+                    let obj = {rid, productId,  price};
+                    data.push(obj);
+            });
+            // console.log(data);
             $.ajax({
                 method: 'POST',
                 url: "{% url 'compliteOrder' %}",
@@ -124,7 +119,8 @@
                     senddata: JSON.stringify(data),
                 },
                 success: function() {
-                    console.log('Success!');
+                    // console.log('Success!');
+                    window.location.href = "/restaurants/";
                 },
                 error: function() {
                     console.log('Error...');

@@ -74,3 +74,8 @@ def manage_orders(request):
       
     # return render(request, 'dashboard/generalUser/allOrder.html', {'orders':orders, 'all_count':all_count, 'delivered_count':delivered_count, 'pending_count':pending_count })
     return render(request, 'dashboard/seller/order_management.html',{'orders':orders,})
+
+@login_required
+def ordered_delivered(request, id):
+    messages.success(request, 'Ordered Delivered!!')
+    return redirect('orderManagement')

@@ -28,6 +28,7 @@ urlpatterns = [
     path('dashboard/apply-for-new-resturent/', sellerViews.create_restaurant, name="allpyForResturent"),
 
     path('dashboard/owner/order/', sellerViews.manage_orders, name='orderManagement'),
+    path('dashboard/owner/order/deliverd/<int:id>/', sellerViews.ordered_delivered, name='order_delivered'),
     # General menuPage
     path('', generalViews.homePage, name='home'),
     path('restaurants/', generalViews.restaurantPage, name='restaurants'),

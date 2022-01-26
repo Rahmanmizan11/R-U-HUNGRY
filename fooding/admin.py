@@ -1,5 +1,6 @@
-from fooding.models import Cart
+from fooding.models import Cart, Order
 from django.contrib import admin
 
 # Register your models here.
 admin.site.register(Cart)
+admin.site.register(Order)

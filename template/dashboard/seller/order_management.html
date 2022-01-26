@@ -11,32 +11,27 @@
                     <table class="posts-table">
                         <thead>
                             <tr class="users-table-info">
-                                <th>Image</th>
+                                <th>Delivery To</th> 
                                 <th>Item Name</th>
+                                <th>Quantity</th>
                                 <th>Price</th>
                                 <th>Status</th>
-                                <th>Category</th>
-                                <th>Action</th>
+                                <th>Mark as delivered</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {% for i in menues %}
+                            {% for i in orders %}
                             <tr>
-                                <td><img src="{{i.image.url}}" alt="menu image"></td>
-                                <td>{{i.name}}</td>
-                                <td>{{i.price}}</td>
-
-                                {% if i.is_available %}
-                                <td><span class="badge-active">Available</span></td>
+                                <td>{{i.user.username}}</td>
+                                <td>{{i.item.name}}</td>
+                                <td>{{i.quantity}}</td>
+                                <td>{{i.total_price}}</td>
+                                {% if i.status == "Pending" %}
+                                <td><span class="badge-pending">Pending</span></td>
                                 {% else %}
-                                <td><span class="badge-pending">Not Available</span></td>
+                                <td><span class="badge-active">Delivered</span></td>
                                 {% endif %}
-                                <td>{{i.category}}</td>
-                                <td>
-                                    <button onclick="updateMdalInfo({'id': '{{rid}}', 'menuID': '{{i.id}}', 'name':'{{i.name}}', 'price': '{{i.price}}', 'is_availabler':'{{i.is_availabler}}', 'category':'{{i.category}}' })" class="btn btn-outline-success rounded-0 p-1" href={% url 'approve' i.id %} data-bs-toggle="modal" data-bs-target="#updateIteamModal"><i class="fas fa-edit"></i></button>
-                                    <a class="btn btn-outline-danger rounded-0 p-1" href={% url 'deleteMenuItem' i.id %}><i
-                                            class="fas fa-times"></i></a>
-                                </td>
+                                <td><i class="fas fa-check-circle"></i></td>
                             </tr>
                             {% endfor %}
                         </tbody>

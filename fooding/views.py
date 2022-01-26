@@ -1,7 +1,7 @@
 import json
 from urllib import parse
 from django.contrib import messages
-from fooding.models import Cart
+from fooding.models import Cart, Order
 from seller.models import Menu, Restaurant
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
@@ -72,7 +72,22 @@ def compliteOrder(request):
     if request.method == 'POST':
         
         data = request.POST.get('senddata')
-        print(data)
+        obj = json.loads(data)
+      
+        for i in obj:
+            restaurant = Restaurant.objects.get(id=int(i['rid']))
+            cart = Cart.objects.get(id=int(i['productId']))
+            item = Menu.objects.get(id=cart.item.id)
+            total_price = int(i['price'])
+            quantity = total_price/item.price
+            Order.objects.create(restaurant = restaurant,
+                                    user_id = request.user.id,
+                                    item = item,
+                                    quantity = quantity,
+                                    total_price = total_price)
+        
+        messages.success(request, "Order Placed Successfully")
+   
         return JsonResponse({'status':200})
         
  
@@ -108,4 +123,14 @@ def createGeneralOrder(request):
 
 @login_required
 def allGeneralOrder(request):
-    return render(request, 'dashboard/generalUser/allOrder.html')
+    if request.user.userdetail.is_admin:
+        orders = Order.objects.all().order_by('-id')
+        all_count = orders.count()
+        delivered_count = Order.objects.filter(status="Delivered").count()
+        pending_count = Order.objects.filter(status="Pending").count()
+    else:
+        orders = Order.objects.filter(user_id=request.user.id).order_by('-id')
+        all_count = orders.count()
+        delivered_count = Order.objects.filter(user_id=request.user.id,status="Delivered").count()
+        pending_count = Order.objects.filter(user_id=request.user.id,status="Pending").count()
+    return render(request, 'dashboard/generalUser/allOrder.html', {'orders':orders, 'all_count':all_count, 'delivered_count':delivered_count, 'pending_count':pending_count })

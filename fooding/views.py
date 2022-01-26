@@ -156,4 +156,8 @@ def allGeneralOrder(request):
 
 @login_required
 def user_give_review(request, id):
-    return render(request, 'fooding/give_review.html')
+    item = Menu.objects.get(id=id)
+    if Order.objects.filter(item=item, user_id=request.user.id, total_price__gte=200, is_reviewed=False, status="Delivered").exists():
+        return render(request, 'fooding/give_review.html',{'item':item,})
+    else:
+        return HttpResponse("Invalid Request")

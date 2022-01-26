@@ -81,10 +81,10 @@
                                 {% endif %}
                                 <td>
                                     
-                                     {% if i.status == "Pending" or i.is_reviewed or i.total_price < 200 %} 
+                                     {% if i.status == "Pending" or i.is_reviewed or i.total_price < 200 or i.user.username != request.user.username %} 
                                         <button disabled class="btn btn-outline-success rounded-0 p-1"><i class="fas fa-file-alt"></i></button> 
                                         {% else %} 
-                                            <a href="{% url 'user_give_review' i.restaurant.id %}" class="btn btn-outline-success rounded-0 p-1"><i class="fas fa-file-alt"></i></a>
+                                            <a href="{% url 'user_give_review' i.item.id %}" class="btn btn-outline-success rounded-0 p-1"><i class="fas fa-file-alt"></i></a>
                                         {% endif %} 
                                         
                                     

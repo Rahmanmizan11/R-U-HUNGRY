@@ -23,6 +23,7 @@ class Order(models.Model):
 
 class Review(models.Model):
     restaurant = models.ForeignKey(Restaurant, on_delete=CASCADE)
+    item = models.ForeignKey(Menu, on_delete=CASCADE)
     user = models.ForeignKey(User, on_delete=CASCADE)
     review = models.CharField(max_length=200)
     time = models.DateTimeField(auto_now_add=True)

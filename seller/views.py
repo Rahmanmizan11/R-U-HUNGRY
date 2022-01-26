@@ -1,3 +1,4 @@
+from fooding.models import Order
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from seller.forms import MenuForm, RestaurantForm
@@ -66,5 +67,10 @@ def deleteMenuItem(request, id):
     messages.success(request, 'Item deleted successfully!')
     return redirect('menuPage1')
 
+@login_required
 def manage_orders(request):
-    return render(request, 'dashboard/seller/order_management.html')
+    rid = Restaurant.objects.get(user_id=request.user.id).id
+    orders = Order.objects.filter(restaurant_id=rid).order_by('-id')
+      
+    # return render(request, 'dashboard/generalUser/allOrder.html', {'orders':orders, 'all_count':all_count, 'delivered_count':delivered_count, 'pending_count':pending_count })
+    return render(request, 'dashboard/seller/order_management.html',{'orders':orders,})

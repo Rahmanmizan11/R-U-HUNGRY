@@ -29,59 +29,37 @@
                     <div class="swin-sc-blog-slider style-02">
                         <div class="main-slider">
                             <div class="slides">
-                                <div class="blog-item swin-transition">
-                                    <div class="blog-featured-img">
-                                        <img src="{% static 'fooding/assets/images/blog/blog-slider-1.jpg' %}"
-                                            alt="fooday" class="img img-responsive" />
-                                    </div>
-                                    <div class="blog-content">
-                                        <div class="blog-date">
-                                            <span class="day">12</span><span class="month">⭐</span>
-                                        </div>
-
-                                        <h3 class="blog-title">
-                                            <a href="#" class="swin-transition"> Resturent Name </a>
-                                        </h3>
+                                {% for i in revs %}
+                                    <div class="blog-item swin-transition">
+                                        
+                                        <div class="blog-content">
                                         <!--review container-->
-                                        <div class="blog-comment">
-                                            <div class="comment-heading swin-sc swin-sc-title style-2 text-left">
-                                                <p class="title">Reviews<span></span></p>
-                                            </div>
-                                            <div class="comment-area">
-                                                <div class="comment-list media-list list-unstyledl">
-                                                    {% comment %} loop {% endcomment %}
-                                                    <div class="comment-item media">
-                                                        <div class="author-comment-image media-left">
-                                                            <a href="#"><img
-                                                                    src="{% static 'fooding/assets/images/blog/blog-comment-avatar03.jpg' %}"
-                                                                    alt="fooday" class="media-object" /></a>
+                                            <div class="blog-comment">
+                                                <div class="comment-heading swin-sc swin-sc-title style-2 text-left">
+                                                    <p class="title">Review for {{i.restaurant.name}} - {{i.item.name}}<span></span></p>
+                                                </div>
+                                                <div class="comment-area">
+                                                    <div class="comment-list media-list list-unstyledl">
+                                                        {% comment %} loop {% endcomment %}
+                                                        <div class="comment-item media">
+                                                            
+                                                            <div class="media-body">
+                                                                <p class="author-comment-name media-heading">
+                                                                   {{i.user.username}}
+                                                                </p>
+                                                                <p>
+                                                                    {{i.review}}
+                                                                </p>
+                                                            </div>
                                                         </div>
-                                                        <div class="media-body">
-                                                            <p class="author-comment-name media-heading">
-                                                                Kelvin Tang
-                                                            </p>
-                                                            <p>
-                                                                Picasio ipsum dolor sit amet, consectetur
-                                                                adipisicing elit, sed do eiusmod tempor
-                                                                incididunt ut labore et dolore magna aliqua. Ut
-                                                                enim ad mini.
-                                                            </p>
-                                                            <ul class="list-inline">
-                                                                <li class="comment-date">25.12.2016</li>
-                                                                <li class="comment-reply">
-                                                                    <a href="#"><i
-                                                                            class="fa fa-mail-reply"></i>Reply</a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
 
+                                                    </div>
                                                 </div>
                                             </div>
+                                            <!--review loop-->
                                         </div>
-                                        <!--review loop-->
                                     </div>
-                                </div>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>

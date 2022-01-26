@@ -110,7 +110,11 @@ def compliteOrder(request):
  
 def reviewPage(request):
     # see all reviews 
-    return render(request, 'fooding/review.html') 
+    return render(request, 'fooding/review.html', {'revs':Review.objects.all().order_by('-id')}) 
+
+def restaurantReviewPage(request,id):
+    # see all reviews 
+    return render(request, 'fooding/review.html', {'revs':Review.objects.filter(restaurant_id=id).order_by('-id')}) 
 
 def restaurantPage(request):
     restaurants = Restaurant.objects.filter(type='restaurant', )
@@ -161,7 +165,8 @@ def user_give_review(request, id):
     if Order.objects.filter(item=item, user_id=request.user.id, total_price__gte=200, is_reviewed=False, status="Delivered").exists():
         if request.method == 'POST':
             # print(request.POST['mess'])
-            Review.objects.create(restaurant=res, item=item, user_id=request.user.id)
+            Review.objects.create(restaurant=res, item=item, user_id=request.user.id, review=request.POST['mess'])
+            Order.objects.filter(item=item, user_id=request.user.id, total_price__gte=200, is_reviewed=False, status="Delivered").update(is_reviewed=True)
             messages.success(request, "Thanks for your review.")
             return redirect('allGeneralOrder')
         return render(request, 'fooding/give_review.html',{'item':item,})

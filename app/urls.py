@@ -10,7 +10,7 @@ from fooding import views as generalViews
 from seller import views as sellerViews
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    # path('admin/', admin.site.urls),
     # Authentication
     path('register/', userViews.register, name='register'),
     path('login/', userViews.loginPage ,name='login'),
@@ -38,6 +38,7 @@ urlpatterns = [
     path('delete-cart-item/<int:id>', generalViews.deleteCartItem, name='deleteCartItem'),
     path('carts/', generalViews.cartPage, name='carts'),
     path('reviews/', generalViews.reviewPage, name='reviews'),
+    path('restaurant-reviews/<int:id>/',generalViews.restaurantReviewPage, name="restaurantReviewPage"),
 
     path('complate-order/', generalViews.compliteOrder, name='compliteOrder'),
    

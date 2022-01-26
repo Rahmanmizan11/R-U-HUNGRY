@@ -1,9 +1,11 @@
+import json
+from urllib import parse
 from django.contrib import messages
 from fooding.models import Cart
 from seller.models import Menu, Restaurant
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.urls import reverse
 # Create your views here.
 def homePage(request):
@@ -29,6 +31,7 @@ def notificationsPage(request):
 def cartPage(request):
     context ={
         'items' : Cart.objects.all(),
+        'rid' : Cart.objects.all()[0].restaurant.id,
     }
     return render(request, 'fooding/cart.html', context)
 
@@ -64,7 +67,14 @@ def addToCart(request, rid, iid):
     except:
         return HttpResponse("Invalid Operation")
     
-    
+@login_required
+def compliteOrder(request):
+    if request.method == 'POST':
+        
+        data = request.POST.get('senddata')
+        print(data)
+        return JsonResponse({'status':200})
+        
  
 def reviewPage(request):
     # see all reviews 

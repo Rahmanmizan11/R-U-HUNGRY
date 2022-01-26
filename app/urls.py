@@ -36,6 +36,8 @@ urlpatterns = [
     path('delete-cart-item/<int:id>', generalViews.deleteCartItem, name='deleteCartItem'),
     path('carts/', generalViews.cartPage, name='carts'),
     path('reviews/', generalViews.reviewPage, name='reviews'),
+
+    path('complate-order/', generalViews.compliteOrder, name='compliteOrder'),
    
     path('search/', generalViews.searchPage, name='search'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

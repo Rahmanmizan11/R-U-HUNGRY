@@ -23,8 +23,8 @@
     <div class="page-content-wrapper">
         <div class="container">
             <section class="padding-top-100 padding-bottom-100">
-                <form class="product-cart-form">
-                    <table class="shop_table shop_table_responsive">
+                
+                    <table id="cart__table" class="shop_table shop_table_responsive">
                         <thead>
                             <tr>
                                 <th class="product-remove"> </th>
@@ -40,7 +40,7 @@
                             {% for i in items %}
                             <tr class="cart_item">
                                 <td class="product-remove"><a href="{% url 'deleteCartItem' i.id %}" aria-label="Remove this item"
-                                        data-product_id="1061" data-product_sku="" class="remove">×</a></td>
+                                        data-product_id="1061" data-product_sku="" class="remove">×</a><span style="display: none;">{{i.id}}</span></td>
                                 <td class="product-thumbnail"><a href=""><img width="150" height="100"
                                             src="{{i.item.image.url}}" alt=""
                                             class="img-responsive"></a></td>
@@ -64,22 +64,67 @@
                                             class="product-Price-currencySymbol">৳</span>{{i.total_price}}</span></td>
                             </tr>
                             {% endfor %}
-                            
-                            <tr>
-                                <td colspan="6" class="product-coupon">
-                                    <div class="actions">
-                                        <input type="button" name="order_now" value="Order Now"
-                                            class="swin-btn f-right">
-                                    </div>
-                                </td>
-                            </tr>
                         </tbody>
                     </table>
-                </form>
+                    <div class="actions" style="float: right;">
+                        <input type="button" name="order_now" value="Order Now"
+                            class="swin-btn f-right" onclick="sendData()">
+                    </div>
             </section>
         </div>
     </div>
 </div>
 <a id="totop" href="#" class="animated"><i class="fa fa-angle-double-up"></i></a>
 </div>
+
+
 {% endblock main %}
+
+
+{% block custimPaseJs %}
+<script>
+        let  data = [];
+       var table = $("table tbody");
+        
+        rid = `{{rid}}`
+        table.find('tr').each(function (i) {
+            
+                var $tds = $(this).find('td');
+                productId = $tds.eq(0).text().substring(1);
+                // Quantity = $tds.eq(5).text();
+                price = $tds.eq(6).text().substring(1);;
+                
+            // do something with productId, product, Quantity
+            // console.log('Id: ' + productId
+            //     + '\nQuantity: ' + Quantity
+            //     + '\nprice: ' + price);
+                let obj = {rid, productId,  price};
+                data.push(obj);
+        });
+        
+        function sendData(){
+            // let  = new FormData;
+
+            console.log(data)
+            $.ajax({
+                method: 'POST',
+                url: "{% url 'compliteOrder' %}",
+                
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}',
+                },
+                data: {
+                    senddata: JSON.stringify(data),
+                },
+                success: function() {
+                    console.log('Success!');
+                },
+                error: function() {
+                    console.log('Error...');
+                },
+            });
+        }
+       
+</script>
+
+{% endblock custimPaseJs %}

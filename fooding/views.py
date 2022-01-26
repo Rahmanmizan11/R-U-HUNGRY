@@ -155,5 +155,5 @@ def allGeneralOrder(request):
 
 
 @login_required
-def user_give_review(request):
+def user_give_review(request, id):
     return render(request, 'fooding/give_review.html')

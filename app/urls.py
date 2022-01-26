@@ -19,7 +19,7 @@ urlpatterns = [
     # Dashboard 
     # path('dashboard/account-info/', userViews.userDashboardProfile, name="user-dashboard"),
     path('dashboard/all-orders/', generalViews.allGeneralOrder, name="allGeneralOrder"),
-    path('dashboard/user-review/', generalViews.user_give_review, name="user_give_review"),
+    path('dashboard/user-review/<int:id>/', generalViews.user_give_review, name="user_give_review"),
     path('dashboard/profile/', userViews.profile, name="dashboardProfile"),
     path('dashboard/menu/', sellerViews.menuPage, name="menuPage1"),
     path('dashboard/menu/delete/<int:id>', sellerViews.deleteMenuItem, name="deleteMenuItem"),

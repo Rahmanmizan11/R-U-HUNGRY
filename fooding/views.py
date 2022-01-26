@@ -1,7 +1,7 @@
 import json
 from watson import search as watson
 from django.contrib import messages
-from fooding.models import Cart, Order
+from fooding.models import Cart, Order, Review
 from seller.models import Menu, Restaurant
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
@@ -157,7 +157,13 @@ def allGeneralOrder(request):
 @login_required
 def user_give_review(request, id):
     item = Menu.objects.get(id=id)
+    res = Restaurant.objects.get(id=item.retaurant.id)
     if Order.objects.filter(item=item, user_id=request.user.id, total_price__gte=200, is_reviewed=False, status="Delivered").exists():
+        if request.method == 'POST':
+            # print(request.POST['mess'])
+            Review.objects.create(restaurant=res, item=item, user_id=request.user.id)
+            messages.success(request, "Thanks for your review.")
+            return redirect('allGeneralOrder')
         return render(request, 'fooding/give_review.html',{'item':item,})
     else:
         return HttpResponse("Invalid Request")

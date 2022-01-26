@@ -17,7 +17,8 @@ class Order(models.Model):
     item = models.ForeignKey(Menu, on_delete=CASCADE)
     quantity = models.IntegerField()
     total_price = models.IntegerField()
-    status = models.CharField(max_length=10)
+    status = models.CharField(max_length=10, default="Initiated")
+    is_reviewed = models.BooleanField(default=False)
 
 
 class Review(models.Model):

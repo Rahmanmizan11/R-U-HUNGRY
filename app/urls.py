@@ -30,6 +30,7 @@ urlpatterns = [
     path('restaurants/', generalViews.restaurantPage, name='restaurants'),
     path('restaurants/menu/<int:id>', generalViews.menuPage, name='menuPage'),
     path('add-to-cart/<int:rid>/<int:iid>', generalViews.addToCart, name='addToCart'),
+    path('delete-cart-item/<int:id>', generalViews.deleteCartItem, name='deleteCartItem'),
     path('carts/', generalViews.cartPage, name='carts'),
     path('reviews/', generalViews.reviewPage, name='reviews'),
    

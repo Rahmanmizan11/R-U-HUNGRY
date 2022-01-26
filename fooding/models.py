@@ -9,6 +9,7 @@ class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=CASCADE)
     item = models.ForeignKey(Menu, on_delete=CASCADE)
     quantity = models.IntegerField()
+    total_price = models.IntegerField()
 
 class Order(models.Model):
     restaurant = models.ForeignKey(Restaurant, on_delete=CASCADE)

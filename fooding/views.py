@@ -151,3 +151,9 @@ def allGeneralOrder(request):
         delivered_count = Order.objects.filter(user_id=request.user.id,status="Delivered").count()
         pending_count = Order.objects.filter(user_id=request.user.id,status="Pending").count()
     return render(request, 'dashboard/generalUser/allOrder.html', {'orders':orders, 'all_count':all_count, 'delivered_count':delivered_count, 'pending_count':pending_count })
+
+
+
+@login_required
+def user_give_review(request):
+    return render(request, 'fooding/give_review.html')

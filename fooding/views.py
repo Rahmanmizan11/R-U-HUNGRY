@@ -18,9 +18,11 @@ def homePage(request):
     # landing page
     return render(request, 'fooding/index.html', context)
 
+
 def searchPage(request):
     # Search result
-    return render(request, '')
+    searchText = request.GET.get('q')
+    return render(request, 'fooding/search.html')
 
 def notificationsPage(request):
     # can give review 

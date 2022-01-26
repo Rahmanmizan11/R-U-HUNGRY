@@ -48,18 +48,19 @@
                                 </td>
                                 <td data-title="Product" class="product-name">{{i.item.name}}
                                 </td>
-                                <td data-title="Price" class="product-price"><span
-                                        class="product-Price-amount amount"><span
-                                            class="product-Price-currencySymbol">৳</span>{{i.item.price}}</span></td>
+                                <td data-title="Price" class="product-price">
+                                    <span class="product-Price-amount amount" id="price_{{i.item.id}}">
+                                        <span class="product-Price-currencySymbol">৳</span>{{i.item.price}}</span>
+                                </td>
                                 <td data-title="Quantity" class="product-quantity">
                                     <div class="quantity">
-                                        <input type="number" step="1" min="1" max=""
+                                        <input type="number" step="1" min="1" max="" id="input_id_{{i.item.id}}"
                                             name="cart[a89cf525e1d9f04d16ce31165e139a4b][qty]" value="{{i.quantity}}" title="Qty"
                                             size="4" pattern="[0-9]*" inputmode="numeric"
-                                            class="form-control input-qty">
+                                            class="form-control input-qty" onchange="changeInput(`{{i.item.id}}`)">
                                     </div>
                                 </td>
-                                <td data-title="Total" class="product-subtotal"><span
+                                <td data-title="Total" class="product-subtotal"><span id="total_price_{{i.item.id}}"
                                         class="product-Price-amount amount"><span
                                             class="product-Price-currencySymbol">৳</span>{{i.total_price}}</span></td>
                             </tr>
@@ -83,6 +84,12 @@
 
 {% block custimPaseJs %}
 <script>
+        function changeInput(id){
+            var sprice =  document.getElementById(`price_${id}`).textContent.trim().substring(1)*1;
+            var tprice = document.getElementById(`total_price_${id}`);
+            var q = document.getElementById(`input_id_${id}`).value*1;
+            tprice.textContent = q*sprice;
+        }
         let  data = [];
        var table = $("table tbody");
         
@@ -92,7 +99,7 @@
                 var $tds = $(this).find('td');
                 productId = $tds.eq(0).text().substring(1);
                 // Quantity = $tds.eq(5).text();
-                price = $tds.eq(6).text().substring(1);;
+                price = $tds.eq(6).text().substring(1);
                 
             // do something with productId, product, Quantity
             // console.log('Id: ' + productId

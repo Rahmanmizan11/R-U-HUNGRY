@@ -77,5 +77,8 @@ def manage_orders(request):
 
 @login_required
 def ordered_delivered(request, id):
+    order = Order.objects.get(id=id)
+    order.status = "Delivered"
+    order.save()
     messages.success(request, 'Ordered Delivered!!')
     return redirect('orderManagement')

@@ -19,51 +19,141 @@
                     data--120-top="transform: translateY(30px);opacity:0;" data-anchor-target=".page-title"
                     class="subtitle">The various dishes are waiting for you.</div>
                 <div class="btn-wrap text-center animated fadeInUp" style="margin-top: 1.5rem;"><a href="#"
-                        class="btn swin-btn btn-transparent"> <span>See Reviews</span></a>
+                        class="btn swin-btn btn-transparent"> <span></span></a>
                 </div>
             </div>
         </div>
     </div>
+  
+        
     <div class="page-content-wrapper">
-        <section class="product-sesction-02 padding-top-100 padding-bottom-100">
-            <div class="container">
-                <div class="swin-sc swin-sc-product products-02 carousel-02">
-                    <div class="products nav-slider">
-                        <div class="row slick-padding">
-                            {% for i in menuInfo %}
-                            <div class="col-md-4 col-sm-6 col-xs-12">
-                                <div class="blog-item item swin-transition">
-                                    <div class="block-img"><img src="{{i.image.url}}" alt="Menu Image"
-                                            class="img img-responsive">
-                                        <div class="block-circle price-wrapper"><span
-                                                class="price woocommerce-Price-amount amount"><span
-                                                    class="price-symbol">৳</span>{{i.price}}</span></div>
-                                        <div class="group-btn">
-                                            <a href="{% url 'addToCart' restaurantInfo.id i.id %}" class="swin-btn btn-add-to-card">
-                                                <i class="fa fa-shopping-basket"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="block-content">
-                                        <h5 class="title"><a href="javascript:void(0)">{{i.name}}</a>
-                                        </h5>
-                                        <div class="product-info">
-                                            <ul class="list-inline">
-                                                <li class="author"><span>Category</span><span
-                                                        class="text">{{i.category}}</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+        <div class="page-content no-padding">
+            {% if restaurants %} 
+            <section class="product-sesction-02 padding-top-120 padding-bottom-100">
+                <div class="container">
+                    <div class="swin-sc swin-sc-title">
+                        <p class="top-title"><span>Restaurants</span></p>
+                        <h3 class="title">Search Results</h3>
+                    </div>
+                    <div class="swin-sc swin-sc-product products-02">
+                        <div class="products nav-slider">
+                            <div class="row">
+                                {% for i in restaurants %}
+                                    {% if i.user.userdetail.is_seller %}
+                                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                                <a href="{% url 'menuPage' i.id %}">
+                                                    <div class="blog-item item swin-transition">
+                                                        <div class="block-img"><img
+                                                                src="{{i.image.url}}" alt="Restaurant Image"
+                                                                class="img img-responsive">
+                                                        </div>
+                                                        <div class="block-content">
+                                                            <h5 class="title"><a href="{% url 'menuPage' i.id %}">{{i.name}}</a></h5>
+                                                            <div class="product-info">
+                                                                <ul class="list-inline">
+                                                                    <li class="author"><span>Check {{i.name}}'s</span><span class="text">Menu</span></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                    {% endif %}
+                                {% endfor %}
                             </div>
-                            {% endfor %}
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+               
+            </section>
+            {% endif %}
+            {% if homechefs %} 
+            <section class="padding-top-120 padding-bottom-100">
+                <div class="container">
+                    <div class="swin-sc swin-sc-title">
+                        <p class="top-title"><span>Homechefs</span></p>
+                        <h3 class="title">Search Result</h3>
+                    </div>
+                    <div class="swin-sc swin-sc-product products-02">
+                        <div class="products nav-slider">
+                            <div class="row">
+                                {% for i in homechefs %}
+                                    {% if i.user.userdetail.is_seller %}
+                                        <div class="col-md-3 col-sm-6 col-xs-12">
+                                            <a href="{% url 'menuPage' i.id %}">
+                                                <div class="blog-item item swin-transition">
+                                                    <div class="block-img"><img
+                                                            src="{{i.image.url}}" alt="Restaurant Image"
+                                                            class="img img-responsive">
+                                                    </div>
+                                                    <div class="block-content">
+                                                        <h5 class="title"><a href="{% url 'menuPage' i.id %}">{{i.name}}</a></h5>
+                                                        <div class="product-info">
+                                                            <ul class="list-inline">
+                                                                <li class="author"><span>Check {{i.name}}'s</span><span class="text">Menu</span></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+            </section>
+            {% endif %}
+            {% if foods %}
+                <section class="padding-top-120 padding-bottom-100">
+                    <div class="container">
+                        <div class="swin-sc swin-sc-title">
+                            <p class="top-title"><span>Food Items</span></p>
+                            <h3 class="title">Search Result</h3>
+                        </div>
+                        
+                        <div class="swin-sc swin-sc-product products-02">
+                            <div class="products nav-slider">
+                                <div class="row">
+                                    {% for i in foods %}
+                                    <div class="col-md-4 col-sm-6 col-xs-12">
+                                        <div class="blog-item item swin-transition">
+                                            <div class="block-img"><img src="{{i.image.url}}" alt="Menu Image"
+                                                    class="img img-responsive">
+                                                <div class="block-circle price-wrapper"><span
+                                                        class="price woocommerce-Price-amount amount"><span
+                                                            class="price-symbol">৳</span>{{i.price}}</span></div>
+                                                <div class="group-btn">
+                                                    <a href="{% url 'addToCart' i.retaurant.id i.id %}" class="swin-btn btn-add-to-card">
+                                                        <i class="fa fa-shopping-basket"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="block-content">
+                                                <h5 class="title"><a href="javascript:void(0)">{{i.name}}</a>
+                                                </h5>
+                                                <div class="product-info">
+                                                    <ul class="list-inline">
+                                                        <li class="author"><span>Category</span><span
+                                                                class="text">{{i.category}}</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            {% endif %}
+        </div>
     </div>
+ 
 </div>
 
 <!-- Button trigger modal -->

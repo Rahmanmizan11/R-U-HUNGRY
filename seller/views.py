@@ -43,7 +43,7 @@ def menuPage(request):
                 instance.is_available = True
                 instance.save()
                 messages.success(request, 'New Item addedd successfully!')
-                return redirect('menuPage')
+                return redirect('menuPage1')
             else:
                 print(form.errors)
         if 'update' in request.POST:
@@ -55,7 +55,7 @@ def menuPage(request):
                 # instance.is_available = True
                 # instance.save()
                 messages.success(request, 'Item edited successfully!')
-                return redirect('menuPage')
+                return redirect('menuPage1')
             else:
                 print(form.errors)
     return render(request, 'dashboard/seller/menu.html', context)
@@ -64,7 +64,7 @@ def menuPage(request):
 def deleteMenuItem(request, id):
     Menu.objects.get(id=id).delete()
     messages.success(request, 'Item deleted successfully!')
-    return redirect('menuPage')
+    return redirect('menuPage1')
 
 def manage_orders(request):
     pass

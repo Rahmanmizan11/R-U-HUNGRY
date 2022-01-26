@@ -19,7 +19,7 @@ urlpatterns = [
     # path('dashboard/account-info/', userViews.userDashboardProfile, name="user-dashboard"),
     path('dashboard/all-orders/', generalViews.allGeneralOrder, name="allGeneralOrder"),
     path('dashboard/profile/', userViews.profile, name="dashboardProfile"),
-    path('dashboard/menu/', sellerViews.menuPage, name="menuPage"),
+    path('dashboard/menu/', sellerViews.menuPage, name="menuPage1"),
     path('dashboard/menu/delete/<int:id>', sellerViews.deleteMenuItem, name="deleteMenuItem"),
     path('dashboard/admin/approve/<int:id>/', userViews.approve, name="approve"),
     path('dashboard/admin/reject/<int:id>/', userViews.reject, name="reject"),
@@ -28,7 +28,7 @@ urlpatterns = [
     # General menuPage
     path('', generalViews.homePage, name='home'),
     path('restaurants/', generalViews.restaurantPage, name='restaurants'),
-    path('restaurants/menu/<int:id>', generalViews.menuPage, name='menuPage1'),
+    path('restaurants/menu/<int:id>', generalViews.menuPage, name='menuPage'),
     path('add-to-cart/<int:rid>/<int:iid>', generalViews.addToCart, name='addToCart'),
     path('carts/', generalViews.cartPage, name='carts'),
     path('reviews/', generalViews.reviewPage, name='reviews'),

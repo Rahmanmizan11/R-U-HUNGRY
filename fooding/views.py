@@ -1,3 +1,5 @@
+from django.contrib import messages
+from fooding.models import Cart
 from seller.models import Menu, Restaurant
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
@@ -25,13 +27,37 @@ def notificationsPage(request):
 
 @login_required
 def cartPage(request):
-     
-    return render(request, 'fooding/cart.html')
+    context ={
+        'items' : Cart.objects.all(),
+    }
+    return render(request, 'fooding/cart.html', context)
+
 @login_required
 def addToCart(request, rid, iid):
+    path = "/restaurants/menu/" + str(rid)
+    # print(path)
+    try:
+        restaurant = Restaurant.objects.get(id=rid)
+        item = Menu.objects.get(id=iid)
+        for i in Cart.objects.filter(user_id=request.user.id):
+            if i.restaurant.name != restaurant.name:
+                i.delete()
+                Cart.objects.create(restaurant=restaurant, item=item, user_id=request.user.id, quantity=1)
+                messages.success(request, "Item Added to Cart. Go to cart page to update quantity. Previous items cleared from cart from another restaurant.")
+                return redirect(path)
+            elif i.restaurant.name == restaurant.name and i.item.name == item.name:
+                i.quantity = i.quantity + 1
+                i.save()
+                messages.success(request, "Quantity Increased in Cart")
+                return redirect(path)
+
+        Cart.objects.create(restaurant=restaurant, item=item, user_id=request.user.id, quantity=1)
+        messages.success(request, "Item Added to Cart. Go to cart page to update quantity.")
+        return redirect(path)
+    except:
+        return HttpResponse("Invalid Operation")
     
-    return HttpResponseRedirect(reverse('menuPage1'))
-    # return redirect('carts')
+    
  
 def reviewPage(request):
     # see all reviews 

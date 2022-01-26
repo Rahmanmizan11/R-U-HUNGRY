@@ -16,7 +16,7 @@
                 <div data-top="transform: translateY(0px);opacity:1;" data--20-top="transform: translateY(5px);"
                     data--50-top="transform: translateY(15px);opacity:0.8;"
                     data--120-top="transform: translateY(30px);opacity:0;" data-anchor-target=".page-title"
-                    class="subtitle">We hope you will like this product and give us 5 star rating</div>
+                    class="subtitle"></div>
             </div>
         </div>
     </div>
@@ -28,7 +28,8 @@
                         <thead>
                             <tr>
                                 <th class="product-remove"> </th>
-                                <th class="product-thumbnail"> </th>
+                                <th class="product-thumbnail">Image</th>
+                                <th class="product-name">Seller</th>
                                 <th class="product-name">Product</th>
                                 <th class="product-price">Price</th>
                                 <th class="product-quantity">Quantity</th>
@@ -36,60 +37,38 @@
                             </tr>
                         </thead>
                         <tbody>
+                            {% for i in items %}
                             <tr class="cart_item">
-                                <td class="product-remove"><a href="#" aria-label="Remove this item"
+                                <td class="product-remove"><a href="{% url 'deleteCartItem' i.id %}" aria-label="Remove this item"
                                         data-product_id="1061" data-product_sku="" class="remove">×</a></td>
-                                <td class="product-thumbnail"><a href="#"><img width="150" height="100"
-                                            src="assets/images/product/product-2l.jpg" alt=""
+                                <td class="product-thumbnail"><a href=""><img width="150" height="100"
+                                            src="{{i.item.image.url}}" alt=""
                                             class="img-responsive"></a></td>
-                                <td data-title="Product" class="product-name"><a href="#">Chocolate Fudge Ripple</a>
+                                <td data-title="Product" class="product-name"><a href="{% url 'menuPage' i.restaurant.id %}">{{i.restaurant.name}}</a>
+                                </td>
+                                <td data-title="Product" class="product-name">{{i.item.name}}
                                 </td>
                                 <td data-title="Price" class="product-price"><span
                                         class="product-Price-amount amount"><span
-                                            class="product-Price-currencySymbol">$</span>25.0</span></td>
+                                            class="product-Price-currencySymbol">৳</span>{{i.item.price}}</span></td>
                                 <td data-title="Quantity" class="product-quantity">
                                     <div class="quantity">
-                                        <input type="number" step="1" min="0" max=""
-                                            name="cart[a89cf525e1d9f04d16ce31165e139a4b][qty]" value="1" title="Qty"
+                                        <input type="number" step="1" min="1" max=""
+                                            name="cart[a89cf525e1d9f04d16ce31165e139a4b][qty]" value="{{i.quantity}}" title="Qty"
                                             size="4" pattern="[0-9]*" inputmode="numeric"
                                             class="form-control input-qty">
                                     </div>
                                 </td>
                                 <td data-title="Total" class="product-subtotal"><span
                                         class="product-Price-amount amount"><span
-                                            class="product-Price-currencySymbol">$</span>25.0</span></td>
+                                            class="product-Price-currencySymbol">৳</span>{{i.total_price}}</span></td>
                             </tr>
-                            <tr class="cart_item">
-                                <td class="product-remove"><a href="#" aria-label="Remove this item"
-                                        data-product_id="1070" data-product_sku="" class="remove">×</a></td>
-                                <td class="product-thumbnail"><a href="#"><img width="150" height="100"
-                                            src="assets/images/product/product-2n.jpg" alt=""
-                                            class="img-responsive"></a></td>
-                                <td data-title="Product" class="product-name"><a href="#">Coffee Caramel Swirl</a></td>
-                                <td data-title="Price" class="product-price"><span
-                                        class="product-Price-amount amount"><span
-                                            class="product-Price-currencySymbol">$</span>14.0</span></td>
-                                <td data-title="Quantity" class="product-quantity">
-                                    <div class="quantity">
-                                        <input type="number" step="1" min="0" max="" name="" value="1" title="Qty"
-                                            size="4" pattern="[0-9]*" inputmode="numeric"
-                                            class="form-control input-qty">
-                                    </div>
-                                </td>
-                                <td data-title="Total" class="product-subtotal"><span
-                                        class="product-Price-amount amount"><span
-                                            class="product-Price-currencySymbol">$</span>14.0</span></td>
-                            </tr>
+                            {% endfor %}
+                            
                             <tr>
                                 <td colspan="6" class="product-coupon">
                                     <div class="actions">
-                                        <div class="coupon">
-                                            <input type="text" name="coupon_code" value="" placeholder="Coupon code"
-                                                class="form-control input-coupon">
-                                            <input type="button" name="apply_coupon" value="Apply coupon"
-                                                class="swin-btn">
-                                        </div>
-                                        <input type="button" name="update_cart" value="Update cart"
+                                        <input type="button" name="order_now" value="Order Now"
                                             class="swin-btn f-right">
                                     </div>
                                 </td>
@@ -97,228 +76,10 @@
                         </tbody>
                     </table>
                 </form>
-                <div class="product-cart-total">
-                    <div class="row">
-                        <div class="col-md-6 col-md-offset-6">
-                            <h2 class="cart-total-title">Cart Totals</h2>
-                            <table cellspacing="0" class="shop_table">
-                                <tbody>
-                                    <tr class="cart-subtotal">
-                                        <th>Subtotal</th>
-                                        <td data-title="Subtotal"><span class="product-amount amount"><span
-                                                    class="product-currencySymbol">$</span>39.0</span></td>
-                                    </tr>
-                                    <tr class="order-total">
-                                        <th>Total</th>
-                                        <td data-title="Total"><strong><span class="product-amount amount"><span
-                                                        class="product-currencySymbol">$</span>39.0</span></strong></td>
-                                    </tr>
-                                </tbody>
-                            </table><a href="#" class="swin-btn"><span>Process To Checkout</span></a>
-                        </div>
-                    </div>
-                </div>
             </section>
         </div>
     </div>
 </div>
-<footer>
-    <div class="subscribe-section"><img src="assets/images/background/bg5.png" alt="" class="img-subscribe">
-        <div class="container">
-            <div class="subscribe-wrapper">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <div class="subscribe-heading">
-                            <h3 class="title">Subcribe Us Now</h3>
-                            <div class="des">Get more news and delicious dishes everyday from us</div>
-                        </div>
-                        <form class="widget-newsletter">
-                            <input placeholder="Email" class="form-control"><span class="submit"><i
-                                    class="fa fa-paper-plane"></i></span>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="footer-top"></div>
-    <div class="footer-main">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="ft-widget-area">
-                        <div class="ft-area1">
-                            <div class="swin-wget swin-wget-about">
-                                <div class="clearfix"><a class="wget-logo"><img src="assets/images/logo-ft.png" alt=""
-                                            class="img img-responsive"></a>
-                                    <ul class="socials socials-about list-unstyled list-inline">
-                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="wget-about-content">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
-                                        Duis aute irure dolor.</p>
-                                </div>
-                                <div class="about-contact-info clearfix">
-                                    <div class="address-info">
-                                        <div class="info-icon"><i class="fa fa-map-marker"></i></div>
-                                        <div class="info-content">
-                                            <p>157 White Oak Drive Kansas City </p>
-                                            <p>689 Lynn Street South Boston</p>
-                                        </div>
-                                    </div>
-                                    <div class="phone-info">
-                                        <div class="info-icon"><i class="fa fa-mobile-phone"></i></div>
-                                        <div class="info-content">
-                                            <p>(617)-276-8031</p>
-                                            <p>(617)-276-8031</p>
-                                        </div>
-                                    </div>
-                                    <div class="email-info">
-                                        <div class="info-icon"><i class="fa fa-envelope"></i></div>
-                                        <div class="info-content">
-                                            <p>admin@fooday.com</p>
-                                            <p>support@fooday.com</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="ft-fixed-area">
-                        <div class="reservation-box">
-                            <div class="reservation-wrap">
-                                <h3 class="res-title">Open Hour</h3>
-                                <div class="res-date-time">
-                                    <div class="res-date-time-item">
-                                        <div class="res-date">
-                                            <div class="res-date-item">
-                                                <div class="res-date-text">
-                                                    <p>Tuesday:</p>
-                                                </div>
-                                                <div class="res-date-dot">.......................................</div>
-                                            </div>
-                                        </div>
-                                        <div class="res-time">
-                                            <div class="res-time-item">
-                                                <p>7AM - 9PM</p>
-                                            </div>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                    <div class="res-date-time-item">
-                                        <div class="res-date">
-                                            <div class="res-date-item">
-                                                <div class="res-date-text">
-                                                    <p>Wednesday:</p>
-                                                </div>
-                                                <div class="res-date-dot">.......................................</div>
-                                            </div>
-                                        </div>
-                                        <div class="res-time">
-                                            <div class="res-time-item">
-                                                <p>7AM - 9PM</p>
-                                            </div>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                    <div class="res-date-time-item">
-                                        <div class="res-date">
-                                            <div class="res-date-item">
-                                                <div class="res-date-text">
-                                                    <p>Thursday:</p>
-                                                </div>
-                                                <div class="res-date-dot">.......................................</div>
-                                            </div>
-                                        </div>
-                                        <div class="res-time">
-                                            <div class="res-time-item">
-                                                <p>7AM - 9PM</p>
-                                            </div>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                    <div class="res-date-time-item">
-                                        <div class="res-date">
-                                            <div class="res-date-item">
-                                                <div class="res-date-text">
-                                                    <p>Friday:</p>
-                                                </div>
-                                                <div class="res-date-dot">.......................................</div>
-                                            </div>
-                                        </div>
-                                        <div class="res-time">
-                                            <div class="res-time-item">
-                                                <p>7AM - 9PM</p>
-                                            </div>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                    <div class="res-date-time-item">
-                                        <div class="res-date">
-                                            <div class="res-date-item">
-                                                <div class="res-date-text">
-                                                    <p>Saturday:</p>
-                                                </div>
-                                                <div class="res-date-dot">.......................................</div>
-                                            </div>
-                                        </div>
-                                        <div class="res-time">
-                                            <div class="res-time-item">
-                                                <p>7AM - 9PM</p>
-                                            </div>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                    <div class="res-date-time-item">
-                                        <div class="res-date">
-                                            <div class="res-date-item">
-                                                <div class="res-date-text">
-                                                    <p>Sunday:</p>
-                                                </div>
-                                                <div class="res-date-dot">.......................................</div>
-                                            </div>
-                                        </div>
-                                        <div class="res-time">
-                                            <div class="res-time-item">
-                                                <p>7AM - 9PM</p>
-                                            </div>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                    <div class="res-date-time-item">
-                                        <div class="res-date">
-                                            <div class="res-date-item">
-                                                <div class="res-date-text">
-                                                    <p>Monday:</p>
-                                                </div>
-                                                <div class="res-date-dot">.......................................</div>
-                                            </div>
-                                        </div>
-                                        <div class="res-time">
-                                            <div class="res-time-item">
-                                                <p>Close</p>
-                                            </div>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </div>
-                                <h3 class="res-title">Reservation Numbers</h3>
-                                <p class="res-number">(617)-276-8031</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer><a id="totop" href="#" class="animated"><i class="fa fa-angle-double-up"></i></a>
+<a id="totop" href="#" class="animated"><i class="fa fa-angle-double-up"></i></a>
 </div>
 {% endblock main %}

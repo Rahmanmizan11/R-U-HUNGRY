@@ -33,6 +33,12 @@ def cartPage(request):
     return render(request, 'fooding/cart.html', context)
 
 @login_required
+def deleteCartItem(request, id):
+    Cart.objects.get(id=id).delete()
+    messages.success(request, "Item Removed from Cart.")
+    return redirect('carts')
+
+@login_required
 def addToCart(request, rid, iid):
     path = "/restaurants/menu/" + str(rid)
     # print(path)
@@ -42,16 +48,17 @@ def addToCart(request, rid, iid):
         for i in Cart.objects.filter(user_id=request.user.id):
             if i.restaurant.name != restaurant.name:
                 i.delete()
-                Cart.objects.create(restaurant=restaurant, item=item, user_id=request.user.id, quantity=1)
+                Cart.objects.create(restaurant=restaurant, item=item, user_id=request.user.id, quantity=1, total_price=item.price)
                 messages.success(request, "Item Added to Cart. Go to cart page to update quantity. Previous items cleared from cart from another restaurant.")
                 return redirect(path)
             elif i.restaurant.name == restaurant.name and i.item.name == item.name:
                 i.quantity = i.quantity + 1
+                i.total_price = i.total_price + i.item.price
                 i.save()
                 messages.success(request, "Quantity Increased in Cart")
                 return redirect(path)
 
-        Cart.objects.create(restaurant=restaurant, item=item, user_id=request.user.id, quantity=1)
+        Cart.objects.create(restaurant=restaurant, item=item, user_id=request.user.id, quantity=1, total_price=item.price)
         messages.success(request, "Item Added to Cart. Go to cart page to update quantity.")
         return redirect(path)
     except:
